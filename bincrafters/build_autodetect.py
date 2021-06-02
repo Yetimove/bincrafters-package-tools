@@ -30,8 +30,8 @@ def run_autodetect():
     os.system('conan config set storage.download_cache="{}"'.format(tmpdir))
     os.system('conan config set general.revisions_enabled=1')
     conan_docker_entry_scripts = ''
-    if 'CONAN_DOCKER_RUN_OPTIONS' in  os.environ:
-        conan_docker_entry_scripts += os.environ['CONAN_DOCKER_RUN_OPTIONS'] + ";"
+    if 'CONAN_DOCKER_ENTRY_SCRIPT' in  os.environ:
+        conan_docker_entry_scripts += os.environ['CONAN_DOCKER_ENTRY_SCRIPT'] + ";"
     conan_docker_entry_scripts += "conan config set storage.download_cache='{}'; conan config set general.revisions_enabled=1".format(tmpdir)
     os.environ["CONAN_DOCKER_ENTRY_SCRIPT"] = conan_docker_entry_scripts
     conan_docker_run_options = os.environ.get('CONAN_DOCKER_RUN_OPTIONS','')
